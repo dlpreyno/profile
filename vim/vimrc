@@ -1,0 +1,125 @@
+" DLPR amazon vimrc
+
+colorscheme koehler
+syntax on
+
+set number " precede each line with line number
+set laststatus=2 " always display status line
+set statusline=
+set statusline+=[%{&ff}] " file format
+set statusline+=%F " full file name
+set statusline+=%m " modified flag
+set statusline+=%r " read-only flag
+set statusline+=\ [%l/%L] " cursor line / total lines
+set statusline+=%= " separator
+set statusline+=\ 0x%04B " cursor character
+set statusline+=\ (%2c) " cursor column
+
+set fileformats=unix,dos,mac " end-of-line formats
+set listchars=eol:$,tab:>-,trail:.,extends:\  " set characters to use in 'list' mode
+set list " display hidden characters
+autocmd VimResized * wincmd = " make all splits equal when window resizing
+set colorcolumn=130 " screen columns that are highlighted
+highlight ColorColumn ctermbg=235
+
+set backspace=indent,eol,start " allow backspacing over auto-indent, end-of-line, start position of insert
+
+set tags=./tags;/
+
+setlocal spelllang=en_us " set spell checking language
+set spellfile=~/.vim/spell/en.utf-8.add " set spell check file
+highlight SpellBad ctermfg=white
+command! SP set spell! " toggle spell checking
+noremap <silent> <leader>sp :set spell!<CR>
+
+" toggle use of mouse
+nnoremap <silent> <leader>tm :call ToggleMouse()<CR>
+set mouse=a " allows use of mouse
+
+function! ToggleMouse()
+    if &mouse == ""
+        set mouse=a
+    else
+        set mouse=
+    endif
+    set mouse?
+endfunction
+
+" more intuitive navigating when lines wrap
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+vnoremap j gj
+vnoremap k gk
+vnoremap gj j
+vnoremap gk k
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
+set hlsearch " highlight search matches
+set incsearch " search results as you type
+set ignorecase " search ignores case by default
+set autochdir " change current directory whenever open a file
+set autoindent " copy indent when starting a new line
+set shiftwidth=4
+set tabstop=4 " number of spaces in a <Tab>
+set expandtab " use space instead of <Tab>
+set backupdir=~/.vim/.backup//
+set undodir=~/.vim/.undo//
+set directory=~/.vim/.swp//
+let &titlestring = @%
+set title
+
+" Specify a directory for plugins
+call plug#begin('~/.vim/bundle')
+
+" A script for automatically generating JavaDoc comments
+Plug 'moznion/jcommenter.vim'
+autocmd FileType java let b:jcommenter_class_author='dundee'
+autocmd FileType java let b:jcommenter_file_author='dundee'
+autocmd FileType java map <leader>cj :call JCommentWriter()<CR>
+
+" A plugin that manages your tag files
+Plug 'ludovicchabant/vim-gutentags'
+
+" lean & mean status/tabline that's light as air
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline_theme='jellybeans'
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline_section_z = airline#section#create(['%P','%l','%c'])
+
+" a code-complete engine
+Plug 'valloric/youcompleteme'
+
+" a tree explorer
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+nnoremap <silent> <leader>nt :NERDTreeToggle<CR>
+
+" a Git wrapper so awesome, it should be illegal
+Plug 'tpope/vim-fugitive'
+
+" Fuzzy file, buffer, mru, tag, etc finder
+Plug 'ctrlpvim/ctrlp.vim'
+
+" quoting/parenthesizing made simple
+Plug 'tpope/vim-surround'
+
+" visually displaying indent levels in code
+Plug 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd ctermbg=233
+hi IndentGuidesEven ctermbg=234
+
+" Initialize plugin system
+call plug#end()
+

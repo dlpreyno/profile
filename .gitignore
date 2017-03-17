@@ -1,0 +1,3 @@
+tags
+vim/autoload/*
+!vim/autoload/plug.vim
