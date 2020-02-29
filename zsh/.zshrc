@@ -2,8 +2,8 @@
 export CLICOLOR=1
 export LSCOLORS=ExGxCxDxBxegedabagaced
 export NEWLINE=$'\n'
-export PROMPT_LINE1="%B[%w %t] <%?> %d%b"
-export PROMPT_LINE2="%F{#00ffff}%n %m%f%B>%b"
+export PROMPT_LINE1="%B[%w%t] <%?> %~%b"
+export PROMPT_LINE2="%F{#00ffff}%n@%m %#%f "
 export PS1="${PROMPT_LINE1}${NEWLINE}${PROMPT_LINE2}"
 alias ll='ls -l' # list long format
 alias la='ls -a' # list all
