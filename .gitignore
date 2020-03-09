@@ -3,3 +3,4 @@ vim/autoload/*
 !vim/autoload/plug.vim
 *.swp
 *.zsh_history
+*.zcompdump*
