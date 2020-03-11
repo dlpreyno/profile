@@ -35,9 +35,8 @@ install dependencies
 
 compile YCM
 
-``cd ~/.vim/bundle/YouCompleteMe  
-python3 install.py --all
-``
+    cd ~/.vim/bundle/YouCompleteMe  
+        python3 install.py --all
 
 ### Gutentags (https://github.com/ludovicchabant/vim-gutentags)
 
