@@ -15,8 +15,7 @@ A place to store my profile and dot files.
 
 install vim-plug
 
-``
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+``curl -fLo ~/.vim/autoload/plug.vim --create-dirs \  
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ``
 
@@ -37,8 +36,7 @@ install dependencies
 
 compile YCM
 
-``
-cd ~/.vim/bundle/YouCompleteMe
+``cd ~/.vim/bundle/YouCompleteMe  
 python3 install.py --all
 ``
 
