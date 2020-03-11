@@ -69,12 +69,16 @@ set autoindent " copy indent when starting a new line
 set shiftwidth=4
 set tabstop=4 " number of spaces in a <Tab>
 set expandtab " use space instead of <Tab>
+silent !mkdir -p ~/.vim/.backup
+silent !mkdir -p ~/.vim/.undo
+silent !mkdir -p ~/.vim/.backup
 set backupdir=~/.vim/.backup//
 set undodir=~/.vim/.undo//
 set directory=~/.vim/.swp//
 let &titlestring = @%
 set title
 
+" The following uses vim-plug plugin manager (https://github.com/junegunn/vim-plug)
 " Specify a directory for plugins
 call plug#begin('~/.vim/bundle')
 

@@ -7,12 +7,13 @@ export PATH="~/.vim/plugin:$PATH"
 # terminal
 export CLICOLOR=1
 export LSCOLORS=ExGxCxDxBxegedabagaced
+export LS_COLORS='di=1;34:ln=1;36:so=1;32:pi=1;33:ex=1;31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=34;43:*.avi=1;35:*.bmp=1;35:*.gif=1;35:*.jpg=1;35:*.jpeg=1;35:*.mov=1;35:*.mpg=1;35:*.png=1;35:*.tga=1;35:*.tif=1;35:*.wav=1;35:*.wmv=1;35:*.gz=0;31:*.lzh=0;31:*.tgz=0;31:*.zip=0;31'
 export PS1="\n[\d \t] <$?> \w\n\e[0;36m\u@\H \$ \[$(tput sgr0)\]"
 alias ll='ls -l' # list long format
 alias la='ls -a' # list all
+alias lla='ls -la' # list all, long format
 alias ltr='ls -ltr' # list long format by reverse modification time
 alias ..='cd ..' # up folder
-alias Cd='cd' # becuase i hold the <shift> key too long some times
 alias grep='grep -rn --color --exclude tags --exclude-dir tst' # formatting for grep
 
 # finder
@@ -21,25 +22,12 @@ alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 
 # vim
 alias vi='vim' # only use vim
+export VIMINIT='source ~/Profile/vim/vimrc'
 
-# ssh
-alias sshdlpr='ssh dundee.aka.corp.amazon.com' # ssh to remote desktop
-alias mountdlpr='sshfs -p 22 dundee@dundee.aka.corp.amazon.com:/home/dundee/. ~/Remote-Desktop/ -oauto_cache,reconnect,defer_permissions,noappledouble,negative_vncache,volname=Home,transform_symlinks,follow_symlinks'
-alias umountdlpr='umount -f ~/Remote-Desktop'
+# ruby
+export PATH="$PATH:~/.rbenv/shims"
+eval "$(rbenv init -)"
 
-# development
-alias activate='sudo /apollo/bin/runCommand -a Activate -e'
-alias deactivate='sudo /apollo/bin/runCommand -a Deactivate -e'
-alias bb='brazil-build'
-alias bba='brazil-build apollo-pkg'
-alias bbr='brazil-build release'
-alias bre='brazil-runtime-exec'
-alias brc='brazil-recursive-cmd'
-alias bws='brazil ws'
-alias bwsuse='bws use --gitMode -p'
-alias bwscreate='bws create -n'
-alias bbrc='brc brazil-build'
-alias bball='brc --allPackages'
-alias bbb='brc --allPackages brazil-build'
-alias bbra='bbr apollo-pkg'
-
+# node version manager; NVM
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
