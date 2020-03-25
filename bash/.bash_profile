@@ -1,8 +1,6 @@
-# DLPR amazon bash_profile
+# DLPR bash_profile
 export PATH=$PATH:$HOME/bin
-export PATH="/apollo/env/SDETools/bin:$PATH" # add SDETools to path
-export PATH="~/EnvImprovementNinjas/src/NinjaUtils/bin:$PATH" # add Ninja Utils to path
-export PATH="~/.vim/plugin:$PATH"
+export PATH="~/.vim/bundle:$PATH"
 
 # terminal
 export CLICOLOR=1
@@ -14,7 +12,7 @@ alias la='ls -a' # list all
 alias lla='ls -la' # list all, long format
 alias ltr='ls -ltr' # list long format by reverse modification time
 alias ..='cd ..' # up folder
-alias grep='grep -rn --color --exclude tags --exclude-dir tst' # formatting for grep
+alias grep='grep -rn --color --exclude tags --exclude-dir={tst,.git} ' # formatting for grep
 
 # finder
 alias showfiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
@@ -31,3 +29,6 @@ eval "$(rbenv init -)"
 # node version manager; NVM
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
+
+# PostgreSQL
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
