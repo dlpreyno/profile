@@ -12,4 +12,4 @@
 [commit]
 	template = /Users/dundeereyno/.stCommitMsg
 [alias]
-	logline = log --pretty=format:'%C(yellow)%h%Creset %C(cyan)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	logline = log --pretty=format:'%C(yellow)%h%Creset %C(cyan)%d%Creset%s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
