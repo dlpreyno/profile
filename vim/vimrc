@@ -66,12 +66,12 @@ set incsearch " search results as you type
 set ignorecase " search ignores case by default
 set autochdir " change current directory whenever open a file
 set autoindent " copy indent when starting a new line
-set shiftwidth=4
-set tabstop=4 " number of spaces in a <Tab>
+set shiftwidth=2
+set tabstop=2 " number of spaces in a <Tab>
 set expandtab " use space instead of <Tab>
 silent !mkdir -p ~/.vim/.backup
 silent !mkdir -p ~/.vim/.undo
-silent !mkdir -p ~/.vim/.backup
+silent !mkdir -p ~/.vim/.swp
 set backupdir=~/.vim/.backup//
 set undodir=~/.vim/.undo//
 set directory=~/.vim/.swp//
