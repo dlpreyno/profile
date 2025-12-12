@@ -26,7 +26,7 @@ export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
 alias db-import-fresh="bundle exec rake db:drop && aws-vault exec order-pu -- bundle exec rake pg:import_dev_staging && bundle exec rake db:migrate"
 alias db-import-test="RAILS_ENV=test bundle exec rake db:drop && RAILS_ENV=test bundle exec rake db:create && RAILS_ENV=test bundle exec rake db:migrate"
-alias db-create-my-user="bundle exec rake admin:users:create[dundee.reyno+admin@sweetgreen.com,testtest,admin]"
+alias db-create-my-user="bundle exec rake \"admin:users:create[dundee.reyno+admin@sweetgreen.com,testtest,admin]\""
 alias open-tunnel-order-dev="aws-vault exec order-pu -- ~/Projects/gravy/scripts/open-tunnel.sh development database"
 alias open-tunnel-order-dev-ext="aws-vault exec order-pu -- ~/Projects/gravy/scripts/open-tunnel.sh development external"
 alias open-tunnel-order-staging="aws-vault exec order-pu -- ~/Projects/gravy/scripts/open-tunnel.sh staging database"
@@ -43,6 +43,20 @@ alias tfi="aws-vault exec order-pu -- terraform init"
 alias tfp="aws-vault exec order-pu -- terraform plan"
 alias tfw="aws-vault exec order-pu -- terraform workspace"
 alias tff="terraform fmt"
+
+# AWS SSO
+awsprof() {
+  export AWS_PROFILE=$1
+  export PROMPT_LINE2="%F{#00ffff}%n@%m ${AWS_PROFILE}%#%f "
+  export PS1="${PROMPT_LINE1}${NEWLINE}${PROMPT_LINE2}"
+}
+alias aws-profile=awsprof
+alias aws-sso-login='aws sso login'
+alias aws-sso-logout='aws sso logout'
+alias aws-id='aws sts get-caller-identity'
+aws-sso-export () {
+	eval "$(aws configure export-credentials --profile ${AWS_PROFILE} --format env)"
+}
 
 # aws-vault
 export AWS_PROFILE=order-pu

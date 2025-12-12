@@ -127,6 +127,9 @@ hi IndentGuidesEven ctermbg=234
 " adds terraform command and highlighting
 Plug 'hashivim/vim-terraform'
 
+" adds slim syntax highlighting
+Plug 'slim-template/vim-slim'
+
 " Initialize plugin system
 call plug#end()
 
